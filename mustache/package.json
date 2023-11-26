@@ -1,0 +1,35 @@
+{
+  "name": "mustache",
+  "description": "Belajar Mustache JS",
+  "author": "Rizki Kosasih",
+  "license": "ISC",
+  "version": "1.0.0",
+  "main": "",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rizkikosasih/Belajar"
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "mustache": "^4.2.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.17.12",
+    "@babel/preset-env": "^7.23.3",
+    "babel-jest": "^29.7.0",
+    "jest": "^28.1.0",
+    "@types/jest": "^28.1.0",
+    "@types/mustache": "^4.2.0"
+  }
+}
