@@ -17,9 +17,19 @@ model sample {
 
 model Customer {
   id Int @id @default(autoincrement())
-  name String @db.VarChar(256)
-  email String @unique
-  phone String @unique
+  name String @db.VarChar(100)
+  email String @unique @db.VarChar(100)
+  phone String @unique @db.VarChar(100)
 
   @@map("customers")
+}
+
+model Product {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(100)
+  price Int
+  stock Int
+  category String @db.VarChar(100)
+
+  @@map("products")
 }

@@ -3,7 +3,7 @@ import { prisma, createPhone, getLastId } from "../src/prisma-client";
 describe('Prisma Client', () => {
 
   it('Should can execute sequential transaction', async () => {
-    const data = await getLastId(), lastId = parseInt(data.id);
+    const data = await getLastId(), lastId = parseInt(data ? data.id : 0);
     const num = lastId + 1, num2 = lastId + 2;
     const [rizki, kosasih] = await prisma.$transaction([
       prisma.customer.create({
@@ -20,15 +20,13 @@ describe('Prisma Client', () => {
           phone: createPhone(num2)
         }
       }),
-    ], {
-      timeout: 360
-    });
+    ]);
     expect(rizki.name).toBe(`Rizki ${num}`);
     expect(kosasih.name).toBe(`Rizki ${num2}`);
   });
 
   it('Should can execute interactive transaction', async () => {
-    const data = await getLastId(), lastId = parseInt(data.id);
+    const data = await getLastId(), lastId = parseInt(data ? data.id : 0);
     const num = lastId + 1, num2 = lastId + 2;
     const [rizki, kosasih] = await prisma.$transaction(async (ps) => {
       const rizki = await ps.customer.create({
@@ -46,8 +44,6 @@ describe('Prisma Client', () => {
         }
       })
       return [rizki, kosasih]
-    }, {
-      timeout: 360
     });
     expect(rizki.name).toBe(`Rizki ${num}`);
     expect(kosasih.name).toBe(`Rizki ${num2}`);

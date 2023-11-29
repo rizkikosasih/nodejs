@@ -36,5 +36,15 @@ export const getLastId = (table = 'customer') => {
       },
       take: 1
     })
+  } else if (table === 'product') {
+    return prisma.product.findFirst({
+      select: {
+        id: true
+      },
+      orderBy: {
+        id: 'desc'
+      },
+      take: 1
+    })
   }
 }

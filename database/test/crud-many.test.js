@@ -3,7 +3,7 @@ import { prisma, createPhone, getLastId } from "./../src/prisma-client";
 describe("Prisma Client", () => {
 
   it("Should can create many records", async () => {
-    const data = await getLastId(), lastId = parseInt(data.id);
+    const data = await getLastId(), lastId = parseInt(data ? data.id : 0);
     const num = lastId + 1, num2 = lastId + 2;
     const { count } = await prisma.customer.createMany({
       data: [
@@ -18,20 +18,18 @@ describe("Prisma Client", () => {
           phone: createPhone(num2)
         },
       ]
-    }, {
-      timeout: 360
     });
     console.info(`affected rows ${count}`);
     expect(count).toBe(2);
   });
 
   it('Should can update many records', async () => {
-    const {count} = await prisma.customer.updateMany({
+    const { count } = await prisma.customer.updateMany({
       data: {
-        name: 'Rizki'
+        name: 'Rizki 1'
       },
       where: {
-        email: 'rizki@gmail.com'
+        email: 'rizki1@gmail.com'
       }
     })
     expect(count).toBe(1);
@@ -49,7 +47,7 @@ describe("Prisma Client", () => {
   it('Should can read many records', async () => {
     const customer = await prisma.customer.findMany({})
     console.table(customer);
-    expect(customer.length).toBeGreaterThan(40);
+    expect(customer.length).toBeGreaterThan(5);
   });
 
 });

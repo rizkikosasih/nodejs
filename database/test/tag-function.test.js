@@ -12,5 +12,5 @@ test('Tag Function', () => {
 
 test('Tag Function SQL', () => {
   const id = 1
-  tagFunction`SELECT * FROM sampe where id=${id}`
+  tagFunction`SELECT * FROM sample where id=${id}`
 })

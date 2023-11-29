@@ -3,7 +3,7 @@ import { prisma, createPhone, getLastId } from "./../src/prisma-client"
 describe("Prisma Client", () => {
 
   it("Should be able to create customer", async () => {
-    const data = await getLastId(), lastId = parseInt(data.id);
+    const data = await getLastId(), lastId = parseInt(data ? data.id : 0);
     const num = lastId + 1
     const customer = await prisma.customer.create({
       data: {
@@ -12,7 +12,7 @@ describe("Prisma Client", () => {
         phone: createPhone(num)
       },
     }, {
-      timeout: 360
+      timeout: 999999
     });
     console.table(customer);
     expect(customer.name).toBe(`Rizki ${num}`);

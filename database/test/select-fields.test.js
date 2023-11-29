@@ -4,7 +4,7 @@ import { prisma, createPhone, getLastId } from "../src/prisma-client";
 describe('Prisma Client', () => {
 
   it('Should can create and select fields', async () => {
-    const data = await getLastId(), lastId = parseInt(data.id);
+    const data = await getLastId(), lastId = parseInt(data ? data.id : 0);
     const num = lastId + 1
     const customer = await prisma.customer.create({
       data: {
