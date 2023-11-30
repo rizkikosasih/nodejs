@@ -1,6 +1,5 @@
 import { prisma, createPhone, getLastId } from "../src/prisma-client";
 
-
 describe('Prisma Client', () => {
 
   it('Should can create and select fields', async () => {

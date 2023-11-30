@@ -1,6 +1,5 @@
 import { prisma } from "../src/prisma-client";
 
-
 describe('Prisma Client', () => {
 
   it('Should can do sorting', async () => {
