@@ -29,7 +29,7 @@ describe("Prisma Client", () => {
         name: 'Rizki 1'
       },
       where: {
-        email: 'rizki1@gmail.com'
+        email: 'rizki@gmail.com'
       }
     })
     expect(count).toBe(1);
